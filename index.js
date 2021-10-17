@@ -9,8 +9,8 @@ const denominations =[2000,500,100,20,10,5,1];
 
 checkButton.addEventListener("click",function(){
     message.style.display="none";
-    if(billAmount.value>0){
-        if(cashGiven.value >= billAmount.value){
+    if(Number (billAmount.value)>0){
+        if(Number (cashGiven.value) >= Number (billAmount.value)){
            const returnAmount = cashGiven.value - billAmount.value;
             calculateChange(returnAmount);
 
@@ -28,7 +28,7 @@ function calculateChange(returnAmount){
 
     for(let i=0;i<denominations.length;i++){
         const noOfNotes = Math.trunc(returnAmount/denominations[i]);
-        returnAmount %= denominations[i];
+        returnAmount = returnAmount % denominations[i];
         notes[i].innerText=noOfNotes;
     }
 
